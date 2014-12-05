@@ -16,11 +16,11 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/tsuru/config"
-	"github.com/tsuru/gandalf/db"
-	"github.com/tsuru/gandalf/fs"
-	"github.com/tsuru/gandalf/multipartzip"
-	"github.com/tsuru/tsuru/log"
+	"github.com/gleez/gandalf/config"
+	"github.com/gleez/gandalf/db"
+	"github.com/gleez/gandalf/fs"
+	"github.com/gleez/gandalf/multipartzip"
+	"github.com/gleez/gandalf/log"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )

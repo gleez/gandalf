@@ -7,7 +7,7 @@ package db
 import (
 	"testing"
 
-	"github.com/tsuru/config"
+	"github.com/gleez/gandalf/config"
 	"launchpad.net/gocheck"
 )
 

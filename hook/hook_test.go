@@ -11,9 +11,9 @@ import (
 	"testing"
 
 	"github.com/tsuru/commandmocker"
-	"github.com/tsuru/config"
-	"github.com/tsuru/gandalf/db"
-	"github.com/tsuru/gandalf/fs"
+	"github.com/gleez/config"
+	"github.com/gleez/gandalf/db"
+	"github.com/gleez/gandalf/fs"
 	testingfs "github.com/tsuru/tsuru/fs/testing"
 	"launchpad.net/gocheck"
 )

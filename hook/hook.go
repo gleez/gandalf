@@ -9,8 +9,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/tsuru/config"
-	"github.com/tsuru/gandalf/fs"
+	"github.com/gleez/gandalf/config"
+	"github.com/gleez/gandalf/fs"
 )
 
 func createHookFile(path string, body io.Reader) error {

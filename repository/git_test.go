@@ -9,8 +9,8 @@ import (
 	"path"
 
 	"github.com/tsuru/commandmocker"
-	"github.com/tsuru/config"
-	"github.com/tsuru/gandalf/fs"
+	"github.com/gleez/gandalf/config"
+	"github.com/gleez/gandalf/fs"
 	"github.com/tsuru/tsuru/fs/testing"
 	"launchpad.net/gocheck"
 )

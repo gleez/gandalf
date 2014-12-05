@@ -8,10 +8,11 @@ import (
 	"errors"
 	"fmt"
 	"regexp"
+	//"time"
 
-	"github.com/tsuru/gandalf/db"
-	"github.com/tsuru/gandalf/repository"
-	"github.com/tsuru/tsuru/log"
+	"github.com/gleez/gandalf/db"
+	"github.com/gleez/gandalf/repository"
+	"github.com/gleez/gandalf/log"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -23,7 +24,7 @@ func init() {
 var ErrUserNotFound = errors.New("User not found")
 
 type User struct {
-	Name string `bson:"_id"`
+	Name 		  string `bson:"_id"`
 }
 
 // Creates a new user and write his/her keys into authorized_keys file.

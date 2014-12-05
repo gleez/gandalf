@@ -12,10 +12,10 @@ import (
 	"testing"
 
 	"github.com/tsuru/commandmocker"
-	"github.com/tsuru/config"
-	"github.com/tsuru/gandalf/db"
-	"github.com/tsuru/gandalf/repository"
-	"github.com/tsuru/gandalf/user"
+	"github.com/gleez/gandalf/config"
+	"github.com/gleez/gandalf/db"
+	"github.com/gleez/gandalf/repository"
+	"github.com/gleez/gandalf/user"
 	"gopkg.in/mgo.v2/bson"
 	"launchpad.net/gocheck"
 )

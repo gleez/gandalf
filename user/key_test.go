@@ -15,8 +15,8 @@ import (
 	"path"
 	"time"
 
-	"github.com/tsuru/config"
-	"github.com/tsuru/gandalf/db"
+	"github.com/gleez/gandalf/config"
+	"github.com/gleez/gandalf/db"
 	"gopkg.in/mgo.v2/bson"
 	"launchpad.net/gocheck"
 )

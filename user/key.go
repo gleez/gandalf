@@ -17,10 +17,13 @@ import (
 	"syscall"
 	"time"
 
-	"code.google.com/p/go.crypto/ssh"
-	"github.com/tsuru/config"
-	"github.com/tsuru/gandalf/db"
-	"github.com/tsuru/gandalf/fs"
+	//"code.google.com/p/go.crypto/ssh"
+
+	"github.com/gleez/gandalf/config"
+	"github.com/gleez/gandalf/db"
+	"github.com/gleez/gandalf/fs"
+
+	"golang.org/x/crypto/ssh"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -132,7 +135,9 @@ func addKey(name, body, username string) error {
 		}
 		return err
 	}
+	
 	return writeKey(key)
+	//return nil
 }
 
 func addKeys(keys map[string]string, username string) error {
@@ -207,6 +212,7 @@ func removeKey(name, username string) error {
 	}
 	conn.Key().Remove(k)
 	return remove(&k)
+	//return nil
 }
 
 type KeyList []Key

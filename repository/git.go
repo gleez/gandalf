@@ -9,8 +9,8 @@ import (
 	"os/exec"
 	"path"
 
-	"github.com/tsuru/config"
-	"github.com/tsuru/gandalf/fs"
+	"github.com/gleez/gandalf/config"
+	"github.com/gleez/gandalf/fs"
 )
 
 var bare string

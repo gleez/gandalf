@@ -6,8 +6,8 @@
 package db
 
 import (
-	"github.com/tsuru/config"
-	"github.com/tsuru/tsuru/db/storage"
+	"github.com/gleez/gandalf/config"
+	"github.com/gleez/gandalf/db/storage"
 	"gopkg.in/mgo.v2"
 )
 

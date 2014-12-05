@@ -16,10 +16,10 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/tsuru/config"
-	"github.com/tsuru/gandalf/db"
-	"github.com/tsuru/gandalf/repository"
-	"github.com/tsuru/gandalf/user"
+	"github.com/gleez/gandalf/config"
+	"github.com/gleez/gandalf/db"
+	"github.com/gleez/gandalf/repository"
+	"github.com/gleez/gandalf/user"
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -59,7 +59,8 @@ func hasReadPermission(u *user.User, r *repository.Repository) (allowed bool) {
 // SSH_ORIGINAL_COMMAND=git-receive-pack 'foo.git'
 // This function is responsible for retrieving the `git-receive-pack` part of SSH_ORIGINAL_COMMAND
 func action() string {
-	return strings.Split(os.Getenv("SSH_ORIGINAL_COMMAND"), " ")[0]
+	//return strings.Split(os.Getenv("SSH_ORIGINAL_COMMAND"), " ")[0]
+	return strings.Split("git-receive-pack 'test.git'", " ")[0]
 }
 
 // Get the repository name requested in SSH_ORIGINAL_COMMAND and retrieves
@@ -101,7 +102,8 @@ func parseGitCommand() (command, name string, err error) {
 	if err != nil {
 		panic(err)
 	}
-	m := r.FindStringSubmatch(os.Getenv("SSH_ORIGINAL_COMMAND"))
+	//m := r.FindStringSubmatch(os.Getenv("SSH_ORIGINAL_COMMAND"))
+	m := r.FindStringSubmatch("git-receive-pack 'test.git'")
 	if len(m) != 4 {
 		return "", "", errors.New("You've tried to execute some weird command, I'm deliberately denying you to do that, get over it.")
 	}
@@ -170,7 +172,8 @@ func formatCommand() ([]string, error) {
 		return []string{}, err
 	}
 	repoName += ".git"
-	cmdList := strings.Split(os.Getenv("SSH_ORIGINAL_COMMAND"), " ")
+	//cmdList := strings.Split(os.Getenv("SSH_ORIGINAL_COMMAND"), " ")
+	cmdList := strings.Split("git-receive-pack 'test.git'", " ")
 	if len(cmdList) != 2 {
 		log.Err("Malformed git command")
 		return []string{}, fmt.Errorf("Malformed git command")
@@ -186,7 +189,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err.Error())
 		panic(err.Error())
 	}
-	err = config.ReadConfigFile("/etc/gandalf.conf")
+	err = config.ReadConfigFile("/home/gleez/go/projects/gitshell-dist/etc/gitshell.conf")
 	if err != nil {
 		log.Err(err.Error())
 		fmt.Fprintln(os.Stderr, err.Error())
