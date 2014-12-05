@@ -19,11 +19,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/tsuru/commandmocker"
 	"github.com/gleez/gandalf/config"
 	"github.com/gleez/gandalf/db"
 	"github.com/gleez/gandalf/fs"
 	"github.com/gleez/gandalf/multipartzip"
+	"github.com/tsuru/commandmocker"
 	fstesting "github.com/tsuru/tsuru/fs/testing"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"

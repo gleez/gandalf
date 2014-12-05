@@ -184,4 +184,3 @@ func timedExit() {
 	log.Println("Smtpd clean shutdown timed out, forcing exit")
 	os.Exit(0)
 }
-

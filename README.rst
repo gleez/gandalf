@@ -1,11 +1,11 @@
-.. image:: https://secure.travis-ci.org/tsuru/gandalf.png
-   :target: http://travis-ci.org/tsuru/gandalf
 
 +++++++
 Gandalf
 +++++++
 
 Gandalf is a REST api written in go to manage git repositories, users and provide access to them over SSH.
+
+Builtin SSH servers checks public keys from mongodb instead of authorized file
 
 YOU SHALL NOT PASS!
 ==================

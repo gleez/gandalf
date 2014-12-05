@@ -11,11 +11,11 @@ import (
 	"path"
 	"testing"
 
-	"github.com/tsuru/commandmocker"
 	"github.com/gleez/gandalf/config"
 	"github.com/gleez/gandalf/db"
 	"github.com/gleez/gandalf/repository"
 	"github.com/gleez/gandalf/user"
+	"github.com/tsuru/commandmocker"
 	"gopkg.in/mgo.v2/bson"
 	"launchpad.net/gocheck"
 )

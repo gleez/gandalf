@@ -19,8 +19,8 @@ import (
 	"github.com/gleez/gandalf/config"
 	"github.com/gleez/gandalf/db"
 	"github.com/gleez/gandalf/fs"
-	"github.com/gleez/gandalf/multipartzip"
 	"github.com/gleez/gandalf/log"
+	"github.com/gleez/gandalf/multipartzip"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )

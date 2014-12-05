@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"path"
 
-	"github.com/tsuru/commandmocker"
 	"github.com/gleez/gandalf/config"
 	"github.com/gleez/gandalf/fs"
+	"github.com/tsuru/commandmocker"
 	"github.com/tsuru/tsuru/fs/testing"
 	"launchpad.net/gocheck"
 )

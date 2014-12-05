@@ -135,7 +135,7 @@ func addKey(name, body, username string) error {
 		}
 		return err
 	}
-	
+
 	return writeKey(key)
 	//return nil
 }

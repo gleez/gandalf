@@ -13,15 +13,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gorilla/pat"
 	"github.com/gleez/gandalf/config"
+	"github.com/gorilla/pat"
 )
 
 var (
-	Router    *pat.Router
-	listener  net.Listener
-	addr	  string
-	shutdown  bool
+	Router   *pat.Router
+	listener net.Listener
+	addr     string
+	shutdown bool
 )
 
 // Initialize sets up things for unit tests or the Start() method
@@ -92,4 +92,3 @@ func parseRemoteAddr(r *http.Request) string {
 
 	return r.RemoteAddr
 }
-

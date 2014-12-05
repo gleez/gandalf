@@ -32,11 +32,11 @@ import (
 // NewServer creates a new test SSH server that runs a shell
 // command upon login (with the current directory set to user). It can
 // be used to test remote SSH communication.
-func NewServer(bind, uid string, opt ...func(*Server) error) (*Server) {
+func NewServer(bind, uid string, opt ...func(*Server) error) *Server {
 	// sem is an active clients channel used for counting clients
 	maxClients := make(chan int, 100)
 
-	s := &Server{Bind: bind, Uid: uid, waitgroup:  new(sync.WaitGroup), sem: maxClients}
+	s := &Server{Bind: bind, Uid: uid, waitgroup: new(sync.WaitGroup), sem: maxClients}
 
 	for _, opt := range opt {
 		if err := opt(s); err != nil {
@@ -50,17 +50,17 @@ func NewServer(bind, uid string, opt ...func(*Server) error) (*Server) {
 
 // Server is an SSH server.
 type Server struct {
-	Bind  string
-	Uid   string
+	Bind string
+	Uid  string
 
 	SSH ssh.ServerConfig
-	l *net.TCPListener
+	l   *net.TCPListener
 
 	closedMu sync.Mutex
 	closed   bool // whether l is closed
 
-	waitgroup   *sync.WaitGroup
-	sem         chan int // currently active clients
+	waitgroup *sync.WaitGroup
+	sem       chan int // currently active clients
 }
 
 // PrivateKey sets the server's private key and host key.
@@ -79,7 +79,7 @@ func PrivateKey(pemData []byte) func(*Server) error {
 
 		s.SSH.PublicKeyCallback = func(c ssh.ConnMetadata, key ssh.PublicKey) (*ssh.Permissions, error) {
 			host, _, _ := net.SplitHostPort(c.RemoteAddr().String())
-	    	log.Printf("Authenticating user %s from IP %s", c.User(), host)
+			log.Printf("Authenticating user %s from IP %s", c.User(), host)
 			if c.User() == s.Uid {
 				name, err := getUserFromKey(string(ssh.MarshalAuthorizedKey(key)))
 				if err != nil {
@@ -255,7 +255,7 @@ func getUserFromKey(key string) (string, error) {
 	return k.UserName, nil
 }
 
-func canExecuteCmd(sshcmd string, keyId string) ([]string, error)  {
+func canExecuteCmd(sshcmd string, keyId string) ([]string, error) {
 	a, r, err := parseGitCommand(sshcmd)
 	if err != nil {
 		return []string{}, err
@@ -278,11 +278,11 @@ func canExecuteCmd(sshcmd string, keyId string) ([]string, error)  {
 
 	ok := false
 	//var errMsg string
- 	if a == "git-receive-pack" && hasWritePermission(&u, &repo) {
- 		ok = true
- 	} else if a == "git-upload-pack" && hasReadPermission(&u, &repo) {
- 		ok = true
- 	}
+	if a == "git-receive-pack" && hasWritePermission(&u, &repo) {
+		ok = true
+	} else if a == "git-upload-pack" && hasReadPermission(&u, &repo) {
+		ok = true
+	}
 
 	if ok {
 		// split into a function (maybe executeCmd)
@@ -355,10 +355,10 @@ func exitStatus(err error) (exitStatusMsg, error) {
 // and gets the repository from the database based on the info
 // obtained by the SSH_ORIGINAL_COMMAND parse.
 func requestedRepository(repoName string) (repository.Repository, error) {
-/*	_, repoName, err := parseGitCommand(sshcmd)
-	if err != nil {
-		return repository.Repository{}, err
-	}*/
+	/*	_, repoName, err := parseGitCommand(sshcmd)
+		if err != nil {
+			return repository.Repository{}, err
+		}*/
 	var repo repository.Repository
 	conn, err := db.Conn()
 	if err != nil {

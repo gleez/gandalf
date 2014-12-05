@@ -10,10 +10,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/tsuru/commandmocker"
 	"github.com/gleez/config"
 	"github.com/gleez/gandalf/db"
 	"github.com/gleez/gandalf/fs"
+	"github.com/tsuru/commandmocker"
 	testingfs "github.com/tsuru/tsuru/fs/testing"
 	"launchpad.net/gocheck"
 )
