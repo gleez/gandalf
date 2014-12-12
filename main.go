@@ -120,7 +120,6 @@ For an example conf check gandalf/etc/gandalf.conf file.\n %s`
 	}
 
 	// Start HTTP API server
-	api.Initialize()
 	go api.Start()
 
 	// Starts a SSH server listens on given port.

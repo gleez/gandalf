@@ -14,39 +14,33 @@ import (
 	"time"
 
 	"github.com/gleez/gandalf/config"
-	"github.com/gorilla/pat"
 )
 
 var (
-	Router   *pat.Router
 	listener net.Listener
 	addr     string
 	shutdown bool
 )
 
-// Initialize sets up things for unit tests or the Start() method
-func Initialize() {
+// Start() the web server
+func Start() {
 	var err error
-	Router = SetupRouter()
+	router := SetupRouter()
 	addr, err = config.GetString("bind")
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to parse config: %v\n", err)
 		os.Exit(1)
 	}
-}
 
-// Start() the web server
-func Start() {
 	server := &http.Server{
 		Addr:         addr,
-		Handler:      nil,
+		Handler:      router,
 		ReadTimeout:  60 * time.Second,
 		WriteTimeout: 60 * time.Second,
 	}
 
 	// We don't use ListenAndServe because it lacks a way to close the listener
-	var err error
 	listener, err = net.Listen("tcp", addr)
 	if err != nil {
 		log.Printf("HTTP API failed to start listener: %v", err)
