@@ -20,11 +20,11 @@ import (
 	"github.com/gleez/gandalf/sshd"
 )
 
-const version = "0.5.1"
+const version = "0.5.2"
 
 var (
 	// Build info, populated during linking by goxc
-	VERSION    = "0.5.1"
+	VERSION    = "0.5.2"
 	BUILD_DATE = "undefined"
 
 	// Command line flags
